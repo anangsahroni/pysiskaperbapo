@@ -47,7 +47,7 @@ Available market:  ['Pasar Senenan', 'Pasar Ki Lemah Duwur', 'Pasar Baru Bancara
 ```
 4. Query all available market using `market="all"`:
 ```python
-scrap.query(market="all)
+scrap.query(market="all")
 ```
 
 or specific market using `market=[market name]`:
