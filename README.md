@@ -2,10 +2,6 @@
 Python client to scrap Jatimprov's Siskaperbapo
 
 ## Installation
-### Using `pip+git`:
-```
-pip install git+https://github.com/anangsahroni/pysiskaperbapo.git
-```
 ### Using `pip` editable:
 Using `pip`:
 1. Activate your virtual environment
@@ -15,7 +11,11 @@ git clone https://github.com/anangsahroni/pysiskaperbapo.git
 ```
 3. Go to project folder where `setup.py` is located (using `cd` or change directory)
 4. Run `pip install -e`
-
+### Using `pip+git`:
+PS: Not working for private repo (this is private repo), should not be used, just for testing.
+```
+pip install git+https://github.com/anangsahroni/pysiskaperbapo.git
+```
 ## Usage
 1. Import the package:
 ```python
