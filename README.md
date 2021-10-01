@@ -10,7 +10,7 @@ Using `pip`:
 git clone https://github.com/anangsahroni/pysiskaperbapo.git
 ```
 3. Go to project folder where `setup.py` is located (using `cd` or change directory)
-4. Run `pip install -e`
+4. Run `pip install -e .`
 ### Using `pip+git`:
 PS: Not working for private repo (this is private repo), should not be used, just for testing.
 ```
