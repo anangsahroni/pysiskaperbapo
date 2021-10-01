@@ -18,6 +18,10 @@ region="bangkalankab"
 min_date="2021-09-15"
 max_date="2021-09-17"
 ```
+3. Create instance:
+```python
+scrap=EJPERBO(min_date,max_date,region)
+```
 Input parameters and available market will be printed:
 ```
 SISKAPERBO East Java Python Client (unofficial)
@@ -25,10 +29,6 @@ SISKAPERBO East Java Python Client (unofficial)
 Selected region:  Bangkalan
 Time range: 2021-09-15 - 2021-09-17
 Available market:  ['Pasar Senenan', 'Pasar Ki Lemah Duwur', 'Pasar Baru Bancaran']
-```
-3. Create instance:
-```python
-scrap=EJPERBO(min_date,max_date,region)
 ```
 4. Query all available market using `market="all"`:
 ```python
