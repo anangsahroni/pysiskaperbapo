@@ -5,7 +5,7 @@ setup(
     version='0.1.0',
     py_modules=['ejperbo'],
     install_requires=[
-      'numpy'
+      'numpy',
       'pandas',
       'tqdm'
     ],
