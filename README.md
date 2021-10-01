@@ -16,6 +16,12 @@ PS: Not working for private repo (this is private repo), should not be used, jus
 ```
 pip install git+https://github.com/anangsahroni/pysiskaperbapo.git
 ```
+### Manual
+If not familiar with `pip` and `git`:
+1. Download the repository as zip using the `clone` button above
+2. Extract the zip
+3. Install using the above step in **Using `pip` editable** and skip step number 2
+
 ## Usage
 1. Import the package:
 ```python
