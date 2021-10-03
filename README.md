@@ -54,7 +54,14 @@ or specific market using `market=[market name]`:
 ```python
 scrap.query(market="Pasar Senenan")
 ```
-
+or specific days using `days=[days_list]`:
+```python
+scrap.query(days=["Friday","Saturday"])
+```
+or the combination:
+```python
+scrap.query(market="Pasar Senenan", days=["Friday","Saturday"])
+```
 the download will begin and progress bar will appear.
 
 5. To preview the result:
