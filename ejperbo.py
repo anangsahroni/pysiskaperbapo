@@ -15,13 +15,13 @@ class EJPERBO:
     data = pd.DataFrame(dict(JENIS=[],NAMA=[],SATUAN=[],HARGA_KMRN=[],HARGA_SKRG=[],
                              PERUB_RP=[], PERUB_PERSEN=[], KAB=[], TANGGAL=[], PASAR=[]))
     market_data=[]
-    
+
     def __init__(self, min_date, max_date, region):
         self.min_date=min_date
         self.max_date=max_date
         self.region=region
         self._market_parse(init=True)
-        
+
     def _market_parse(self, init=False):
         with requests.session() as rs:
             rs.get(self.URL)
@@ -40,18 +40,25 @@ class EJPERBO:
             self.market_data=dict(m_names=market_names,m_id=market_id)
         else:
             return dict(m_names=market_names,m_id=market_id)
-        
-    def _time_parse(self):
+
+    def _time_parse(self, days):
         min_date_l = [int(d) for d in self.min_date.split("-")]
         max_date_l = [int(d) for d in self.max_date.split("-")]
         min_date_dt = datetime.date(min_date_l[0], min_date_l[1], min_date_l[2])
         max_date_dt = datetime.date(max_date_l[0], max_date_l[1], max_date_l[2])
         time_dif = max_date_dt-min_date_dt
         num_days = time_dif.days
-        time_list=[(min_date_dt+datetime.timedelta(i)).strftime("%Y-%m-%d")\
+        if days=="all":
+            time_list=[(min_date_dt+datetime.timedelta(i)).strftime("%Y-%m-%d")\
                    for i in range(num_days)]
+        else:
+            time_list=[]
+            for i in range(num_days):
+                date=min_date_dt+datetime.timedelta(i)
+                if date.strftime("%A") in days:
+                    time_list.append(date.strftime("%Y-%m-%d"))
         return time_list
-    
+
     def _single_query(self, payload, market_data):
         with requests.session() as rs:
             rs.get(self.URL)
@@ -103,14 +110,14 @@ class EJPERBO:
             data['KAB'] = [payload['kabkota'][:-3].capitalize() if payload['kabkota'][-3:] == "kab" \
                            else payload['kabkota'][:4].capitalize() for i in range(len(data['JENIS']))]
             data['TANGGAL'] = [payload['tanggal'] for i in range(len(data['JENIS']))]
-            
+
             #pasar
             market_index=np.where(np.array(market_data['m_id']) == payload['pasar'])[0][0]
             data['PASAR'] = [market_data['m_names'][market_index] for i in range(len(data['JENIS']))]
             return data
-        
-    def query(self, delay=2, market="all"):
-        for date in tqdm(self._time_parse()):
+
+    def query(self, delay=2, market="all", days="all"):
+        for date in tqdm(self._time_parse(days=days)):
             if market == "all":
                 market_data=self.market_data
                 for market_id, market_name in zip(market_data['m_id'], market_data['m_names']):
@@ -130,3 +137,4 @@ class EJPERBO:
 
                 element_day=self._single_query(payload, market_data)
                 self.data = self.data.append(element_day)
+                time.sleep(delay)
