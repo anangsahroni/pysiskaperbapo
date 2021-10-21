@@ -87,9 +87,10 @@ class EJPERBO:
             data['HARGA_KEMARIN'] = data['HARGA_KEMARIN'].str.replace('.','',regex=False)
             data['HARGA_SEKARANG'] = data['HARGA_SEKARANG'].astype(str).str.replace('.','',regex=False)
             data['PERUBAHAN_RP'] = data['PERUBAHAN_RP'].astype(str).str.replace('.','',regex=False)
-            data['PERUBAHAN_PERSEN'] = data['PERUBAHAN_PERSEN'].astype(str).str.replace(',','.')
-            data['PERUBAHAN_PERSEN'] = data['PERUBAHAN_PERSEN'].astype(str).str.replace('%','')
-
+            data['PERUBAHAN_PERSEN'] = data['PERUBAHAN_PERSEN'].astype(str).str.replace('.','', regex=False)
+            data['PERUBAHAN_PERSEN'] = data['PERUBAHAN_PERSEN'].astype(str).str.replace(',','.', regex=False)
+            data['PERUBAHAN_PERSEN'] = data['PERUBAHAN_PERSEN'].astype(str).str.replace('%','', regex=False)
+            
             data[['HARGA_KEMARIN', 'HARGA_SEKARANG','PERUBAHAN_RP','PERUBAHAN_PERSEN']] = \
                  data[['HARGA_KEMARIN', 'HARGA_SEKARANG','PERUBAHAN_RP','PERUBAHAN_PERSEN']].astype(float)
             data.insert(0, 'BHN_PKKS', data['BHN_PKK'])
