@@ -72,3 +72,10 @@ scrap.data
 ```python
 scrap.data.to_csv("[filename].csv", index=False)
 ```
+7. To query by month use:
+```python
+scrap.query_by_month(request_delay=1, month_delay=60, market="all", days="all", max_try=2)
+```
+`request_delay`: delay every request/ every market
+`month_delay`: delay every month
+`max_try`: maximum number of retries if error occurs
