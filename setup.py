@@ -7,7 +7,8 @@ setup(
     install_requires=[
       'numpy',
       'pandas',
-      'tqdm'
+      'tqdm',
+      'calendar'
     ],
     entry_points='''
         [console_scripts]
