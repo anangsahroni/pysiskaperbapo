@@ -194,8 +194,8 @@ class EJPERBO:
                 time.sleep(delay)
     
     def query_by_month(self, request_delay=2, month_delay=60, market="all", days="all", max_try=2):
+        failed=[]
         for crange in tqdm(self._time_parse_month(), desc="Months"):
-            failed=[]
             try:
                 self.query(delay=request_delay, market=market, days=days, custom_range=crange)
                 self.data.to_csv("{}_{}_{}.csv".format(self.region, crange[0].replace("-",""),\
