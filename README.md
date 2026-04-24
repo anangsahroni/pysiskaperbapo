@@ -1,6 +1,15 @@
 # PySISKAPERBAPO
 Python client to scrap Jatimprov's Siskaperbapo
 
+This project was built with responsible scraping principles in mind:
+
+- **Rate limiting** — requests were throttled to avoid overloading the server,
+  mimicking normal human browsing intervals
+- **Public data only** — only publicly accessible pages were scraped,
+  no authentication bypass or private endpoints
+- **Non-commercial** — data was collected solely for research and 
+  monitoring purposes
+
 ## Installation
 ### Using `pip` editable:
 Using `pip`:
